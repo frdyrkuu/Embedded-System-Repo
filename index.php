@@ -1,6 +1,3 @@
-<?php
-include 'includes/connection.php';
-?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -10,6 +7,7 @@ include 'includes/connection.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Embedded System - Activities</title>
     <link rel="stylesheet" href="src/output.css">
+     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <body class="bg-[#F5F5F5]">
@@ -60,7 +58,7 @@ include 'includes/connection.php';
         <div>
             <h2 class="text-2xl py-2 font-[600]">Activity 1 - Temperature and Humidity</h2>
         </div>
-        <div class="grid grid-cols-5 grid-rows-5 gap-4 h-[400px]">
+        <div class="grid grid-cols-2 grid-rows-2 gap-4 h-[400px]">
             <div class="col-span-2 row-span-5 bg-white rounded-[8px] border-gray-200 shadow-sm p-4 py-8 justify-center grid">
                 <!-- Card 1  -->
                 <div class="flex mx-auto items-center justify-center">
@@ -69,9 +67,12 @@ include 'includes/connection.php';
                 <div>
                     <img src="assets/image/temperature-icon.png" alt="temperature-icon" class="h-[200px] w-[180px]">
                 </div>
-                <div class="flex mx-auto items-center justify-center">
-                    <h2 class="font-[500] text-2xl">30.42 C</h2>
-                </div>
+                <div class="flex mx-auto items-center justify-center gap-4">
+                    <h2 id="temperature" class="font-[500] text-2xl">Loading...</h2>
+                    <span id="buzzer"> 
+                    <svg fill="#f8e45c" height="40px" width="40px" version="1.1" id="Icons" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 32 32" xml:space="preserve"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g> <path d="M26.8,25H5.2c-0.8,0-1.5-0.4-1.9-1.1c-0.4-0.7-0.3-1.5,0.1-2.2L4.5,20c1.8-2.7,2.7-5.8,2.7-9c0-3.7,2.4-7.1,5.9-8.3 C13.7,1.6,14.8,1,16,1s2.3,0.6,2.9,1.7c3.5,1.2,5.9,4.6,5.9,8.3c0,3.2,0.9,6.3,2.7,9l1.1,1.7c0.4,0.7,0.5,1.5,0.1,2.2 C28.4,24.6,27.6,25,26.8,25z"></path> </g> <path d="M11.1,27c0.5,2.3,2.5,4,4.9,4s4.4-1.7,4.9-4H11.1z"></path> </g></svg>
+                    </span>
+                    </div>
             </div>
             <div class="col-span-2 row-span-5 col-start-3 bg-white rounded-[8px] border-gray-200 shadow-sm p-8 justify-center grid">
                 <!-- Card 2  -->
@@ -82,29 +83,125 @@ include 'includes/connection.php';
                     <img src="assets/image/humidity-icon.png" alt="temperature-icon" class="h-[200px] w-[190px]">
                 </div>
                 <div class="flex mx-auto items-center justify-center">
-                    <h2 class="font-[500] text-2xl">30.42 C</h2>
-                </div>
-            </div>
-            <div class="row-span-2 col-start-5 bg-white rounded-[8px] border-gray-200 shadow-sm p-4">
-                <!-- Card 3  -->
-                <div class="mx-auto items-center justify-center text-center">
-                    <h2 class="font-[500] text-2xl">Temperature Status</h2>
-                    <h3 class="text-red-500 text-4xl font-[500]">Hot</h3>
-                </div>
-            </div>
-            <div class="row-span-3 col-start-5 row-start-3 bg-white rounded-[8px] border-gray-200 shadow-sm p-4 flex items-center justify-center">
-                <!-- Card 4  -->
-                <div class="mx-auto items-center justify-center text-center">
-                    <h2 class="font-[500] text-2xl">Humidity Status</h2>
-                    <h3 class="text-green-500 text-4xl font-[500]">Good</h3>
+                    <h2 id="humidity" class="font-[500] text-2xl">Loading...</h2>
                 </div>
             </div>
         </div>
-        <!-- end activity 1 -->
+        
+        
+        <div class="grid grid-cols-5 grid-rows-5 gap-4 h-[400px] bg-white rounded-[8px] border-gray-200 shadow-sm p-4 py-8 w-full mt-4 mx-auto">
+            
+                  <canvas id="myChart" width="18000" height="5000" class="mx-auto flex items-center justify-center"></canvas>		
+            </div>
+            <br>
+             <script>
+        const labels = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']; // X-axis labels
 
+        // Initial chart setup
+        const ctx = document.getElementById('myChart').getContext('2d');
+        const myChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: labels,
+                datasets: [
+                    {
+                        label: 'Temperature (°C)',
+                        data: [], // Initial empty data
+                        fill: false,
+                        borderColor: 'rgb(255, 99, 132)', // Color for temperature line
+                        tension: 0.1
+                    },
+                    {
+                        label: 'Humidity (%)',
+                        data: [], // Initial empty data
+                        fill: false,
+                        borderColor: 'rgb(54, 162, 235)', // Color for humidity line
+                        tension: 0.1
+                    }
+                ]
+            },
+            options: {
+                scales: {
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Label (1-10)'
+                        }
+                    },
+                    y: {
+                        title: {
+                            display: true,
+                            text: 'Value'
+                        }
+                    }
+                }
+            }
+        });
+
+        // Function to fetch data from the server
+        function fetchData() {
+            fetch('includes/chartdata.php') // Update with your PHP script path
+                .then(response => response.json())
+                .then(data => {
+                    // Update the chart with new data
+                    myChart.data.datasets[0].data = data.temperature;
+                    myChart.data.datasets[1].data = data.humidity;
+                    myChart.update(); // Re-render the chart
+                })
+                .catch(error => console.error('Error fetching data:', error));
+        }
+
+        // Fetch data every 10 seconds
+        setInterval(fetchData, 1000); // 10000 milliseconds = 10 seconds
+
+        // Initial data fetch
+        fetchData();
+    </script>
+        </div>
+            
+        <!-- end activity 1 -->
 
     </main>
 
+    <script>
+function updateTemperature() {
+    fetch('includes/get_temp.php')
+        .then(response => response.json())
+        .then(data => {
+            // Update the temperature display
+            document.getElementById('temperature').innerText = `${data.temperature} C`;
+
+            // Get the buzzer icon element
+            const buzzerIcon = document.getElementById('buzzer');
+            
+            // Check if the temperature is 38 or above
+            if (data.temperature >= 38) {
+                // Show the buzzer icon
+                buzzerIcon.style.display = 'block';
+            } else {
+                // Hide the buzzer icon
+                buzzerIcon.style.display = 'none';
+            }
+        })
+        .catch(error => console.error('Error fetching temperature:', error));
+}
+         
+        function updateHumidity() {
+            fetch('includes/get_humidity.php')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('humidity').innerText = `${data.humidity} %`;
+                })
+                .catch(error => console.error('Error fetching temperature:', error));
+        }
+        // Initial update
+        updateTemperature();
+        updateHumidity();
+        
+        // Update every 5 seconds
+        setInterval(updateTemperature, 1000);
+        setInterval(updateHumidity, 1000);
+    </script>
 
 </body>
 

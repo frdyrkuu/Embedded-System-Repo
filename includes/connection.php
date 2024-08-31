@@ -1,8 +1,8 @@
 <?php
 $servername = "localhost";
-$username = "root";
-$password = "";
-$database = "humidity_temp";
+$username = "admin";
+$password = "password";
+$database = "DHT22";
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $database);
@@ -11,7 +11,6 @@ $conn = new mysqli($servername, $username, $password, $database);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
-
 // Close connection
 $conn->close();
 ?>
