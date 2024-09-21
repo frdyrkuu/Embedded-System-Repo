@@ -23,16 +23,16 @@ function updateTemperature() {
                 tempCelsiusElement.style.display = 'none';
             }
 
-            // Get the buzzer icon element
-            const buzzerIcon = document.getElementById('buzzer');
+            // Get the SVG element
+            const buzzerIcon = document.querySelector('#buzzer svg');
 
             // Check if the temperature is 38 or above
             if (celsius >= 38) {
-                // Set the buzzer icon color to green
-                buzzerIcon.style.backgroundColor = 'green'; // Buzzer "on"
+                // Set the buzzer icon color to red (on)
+                buzzerIcon.style.fill = 'red'; // Buzzer "on"
             } else {
-                // Set the buzzer icon color to red
-                buzzerIcon.style.backgroundColor = 'red'; // Buzzer "off"
+                // Set the buzzer icon color to green (off)
+                buzzerIcon.style.fill = 'green'; // Buzzer "off"
             }
         })
         .catch(error => console.error('Error fetching temperature:', error));
@@ -57,8 +57,8 @@ updateTemperature();
 updateHumidity();
 
 // Update every 10 seconds
-setInterval(updateTemperature, 1000);
-setInterval(updateHumidity, 1000);
+setInterval(updateTemperature, 10000); // Adjust interval as needed
+setInterval(updateHumidity, 10000); // Adjust interval as needed
 
 // Add event listener for dropdown change
 document.getElementById('unit-select').addEventListener('change', handleUnitChange);

@@ -13,21 +13,21 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// SQL query to get the most recent record, including distance1
-$sql = "SELECT distance, distance1 FROM ultrasonic ORDER BY id DESC LIMIT 1";
+// SQL query to get the most recent 10 records
+$sql = "SELECT distance FROM ultrasonic ORDER BY id DESC LIMIT 10";
 $result = $conn->query($sql);
 
+$distance = [];
+
+// Check if the query was successful
 if ($result) {
-    if ($row = $result->fetch_assoc()) {
-        $distance = $row['distance'];
-        $distance1 = $row['distance1'];
-    } else {
-        $distance = 'No data';
-        $distance1 = 'No data';
+    while ($row = $result->fetch_assoc()) {
+        // Insert data into array
+        $distance[] = $row['distance'];
     }
 } else {
-    $distance = 'Error';
-    $distance1 = 'Error';
+    // Handle query error
+    $distance = ['Error'];
 }
 
 // Close the connection
@@ -38,7 +38,6 @@ header('Content-Type: application/json');
 
 // Output JSON response
 echo json_encode([
-    'distance' => $distance,
-    'distance1' => $distance1
+    'distance' => array_reverse($distance) // Reverse the array to maintain chronological order
 ]);
 ?>

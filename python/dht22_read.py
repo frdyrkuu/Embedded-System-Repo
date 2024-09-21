@@ -3,16 +3,13 @@ import board
 import adafruit_dht
 import mysql.connector
 from mysql.connector import Error
-import digitalio
 import RPi.GPIO as GPIO
 
-# Define the pin where the DHT22 is connected
+# Define the pins for DHT22 and buzzer
 dht_pin = board.D4  # Change to the GPIO pin you are using
+buzzer_pin = 17     # Change to the GPIO pin you are using for the buzzer
 
-# Define the pin where the buzzer is connected
-buzzer_pin = 17  # Change to the GPIO pin you are using for the buzzer
-
-# Set up the buzzer pin
+# Set up the GPIO pins
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(buzzer_pin, GPIO.OUT)
 GPIO.output(buzzer_pin, GPIO.LOW)  # Initially turn off the buzzer

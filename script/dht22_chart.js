@@ -59,7 +59,7 @@ const myChart = new Chart(ctx, {
 
 // Function to fetch data from the server
 function fetchData() {
-    fetch('includes/chartdata.php') // Update with your PHP script path
+    fetch('/includes/dht22_chart.php') // Update with your PHP script path
         .then(response => response.json())
         .then(data => {
             // Update the chart with new data
