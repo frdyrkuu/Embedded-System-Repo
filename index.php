@@ -126,199 +126,256 @@
         <div>
             <h2 class="text-2xl py-2 font-[600]">Activity 1 - Temperature and Humidity</h2>
         </div>
-        <!-- Activity 1 -->
-        <div class="grid grid-cols-2 grid-rows-2 gap-4 h-[400px]">
-            <div
-                class="col-span-2 row-span-5 bg-white rounded-[8px] border-gray-200 shadow-sm p-4 py-8 justify-center grid">
-                <!-- Card 1 -->
-                <div class="flex mx-auto items-center justify-center">
-                    <h2 class="font-[500] text-2xl">Temperature</h2>
-                </div>
-                <div>
-                    <img src="assets/image/temperature-icon.png" alt="temperature-icon" class="h-[200px] w-[180px]">
-                </div>
-                <div class="flex mx-auto items-center justify-center gap-4">
-                    <!-- Dropdown menu -->
-                    <select id="unit-select" class="text-2xl p-2 border rounded w-full">
-                        <option value="celsius">Celsius</option>
-                        <option value="fahrenheit">Fahrenheit</option>
-                    </select>
-
-                    <!-- Temperature display -->
-                    <h2 id="temperature" class="font-[500] text-2xl">Loading...</h2>
-                </div>
-                <div class="flex mx-auto items-center justify-center gap-4">
-                    <h2 id="temperature-fahrenheit" class="font-[500] text-2xl" style="display: none;">Loading...</h2>
 
 
-                   
-                    <span id="buzzer">
+<!-- Activity 1 -->
+<div class="border border-gray-400 rounded-md p-4 shadow-lg bg-white">
 
-                        <svg fill="#f8e45c" height="40px" width="40px" version="1.1" id="Icons"
-                            xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                            viewBox="0 0 32 32" xml:space="preserve">
-                            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
-                            <g id="SVGRepo_iconCarrier">
-                                <g>
-                                    <path
-                                        d="M26.8,25H5.2c-0.8,0-1.5-0.4-1.9-1.1c-0.4-0.7-0.3-1.5,0.1-2.2L4.5,20c1.8-2.7,2.7-5.8,2.7-9c0-3.7,2.4-7.1,5.9-8.3 C13.7,1.6,14.8,1,16,1s2.3,0.6,2.9,1.7c3.5,1.2,5.9,4.6,5.9,8.3c0,3.2,0.9,6.3,2.7,9l1.1,1.7c0.4,0.7,0.5,1.5,0.1,2.2 C28.4,24.6,27.6,25,26.8,25z">
-                                    </path>
-                                </g>
-                                <path d="M11.1,27c0.5,2.3,2.5,4,4.9,4s4.4-1.7,4.9-4H11.1z"></path>
+    <div class="grid grid-cols-2 gap-4 h-[400px]">
+
+        <!-- Temperature Card -->
+        <div class="col-span-1 row-span-1 justify-center grid border-2 border-blue-500 bg-gradient-to-br from-blue-200 to-blue-300 rounded-md shadow-lg transition-transform transform hover:scale-105 hover:shadow-xl">
+            <div class="flex mx-auto items-center justify-center">
+                <h2 class="font-[500] text-2xl text-blue-600">Temperature</h2>
+            </div>
+            <div>
+                <img src="assets/image/temperature-icon.png" alt="temperature-icon" class="h-[200px] w-[180px] mx-auto">
+            </div>
+            <div class="flex mx-auto items-center justify-center gap-4">
+                <!-- Dropdown menu -->
+                <select id="unit-select" class="text-2xl p-2 border border-gray-300 rounded w-full">
+                    <option value="celsius">Celsius</option>
+                    <option value="fahrenheit">Fahrenheit</option>
+                </select>
+
+                <!-- Temperature display -->
+                <h2 id="temperature" class="font-[500] text-2xl">Loading...</h2>
+            </div>
+            <div class="flex mx-auto items-center justify-center gap-4">
+                <h2 id="temperature-fahrenheit" class="font-[500] text-2xl" style="display: none;">Loading...</h2>
+
+                <span id="buzzer">
+                    <svg fill="#f8e45c" height="40px" width="40px" version="1.1" id="Icons"
+                        xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                        viewBox="0 0 32 32" xml:space="preserve">
+                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                        <g id="SVGRepo_iconCarrier">
+                            <g>
+                                <path
+                                    d="M26.8,25H5.2c-0.8,0-1.5-0.4-1.9-1.1c-0.4-0.7-0.3-1.5,0.1-2.2L4.5,20c1.8-2.7,2.7-5.8,2.7-9c0-3.7,2.4-7.1,5.9-8.3 C13.7,1.6,14.8,1,16,1s2.3,0.6,2.9,1.7c3.5,1.2,5.9,4.6,5.9,8.3c0,3.2,0.9,6.3,2.7,9l1.1,1.7c0.4,0.7,0.5,1.5,0.1,2.2 C28.4,24.6,27.6,25,26.8,25z">
+                                </path>
                             </g>
-                        </svg>
-                    </span>
-                </div>
-
-
-            </div>
-            <div
-                class="col-span-2 row-span-5 col-start-3 bg-white rounded-[8px] border-gray-200 shadow-sm p-8 justify-center grid">
-                <!-- Card 2  -->
-                <div class="flex mx-auto items-center justify-center">
-                    <h2 class="font-[500] text-2xl">Humidity</h2>
-                </div>
-                <div>
-                    <img src="assets/image/humidity-icon.png" alt="temperature-icon" class="h-[200px] w-[190px]">
-                </div>
-                <div class="flex mx-auto items-center justify-center">
-                    <h2 id="humidity" class="font-[500] text-2xl">Loading...</h2>
-                </div>
-            </div>
-        </div>
-
-        <div
-            class="grid grid-cols-5 grid-rows-5 gap-4 h-[400px] bg-white rounded-[8px] border-gray-200 shadow-sm p-4 py-8 w-full mt-4 mx-auto">
-
-            <canvas id="myChart" width="18000" height="5000" class="mx-auto flex items-center justify-center"></canvas>
-        </div>
-
-        <!-- end activity 1 -->
-
-
-        <!-- ACT2 -->
-        <section id="act2">
-        <h2 class="text-2xl py-2 font-[600]">Activity 2 - Distance Sensor</h2>
-
-        <div class="grid grid-cols-2 grid-rows-2 gap-4 h-[600px] pb-10">
-            <div
-                class="col-span-2 row-span-5 bg-white rounded-[8px] border-gray-200 shadow-sm p-4 py-8 justify-center grid">
-                <!-- Card 1  -->
-                <div class="flex mx-auto items-center justify-center">
-                    <h2 class="font-[500] text-2xl">Distance</h2>
-
-                </div>
-
-                <div class="justify-center my-4">
-                    <img src="assets/image/Distance-icon.png" alt="distance-icon" class="h-[300px] w-[300px]">
-                    <h2 id="distance" class="font-[500] text-2xl text-center p-4">Loading...</h2>
-                </div>
-
-                <!-- Dropdown Menu -->
-                <div class="flex mx-auto items-center justify-center gap-4">
-                    <label for="distance-unit-select" class="font-medium">Select Unit:</label>
-                    <select id="distance-unit-select" class="p-2 border rounded-md">
-                       <option value="cm">Centimeters (cm)</option>
-                        <option value="mm">Millimeters (mm)</option>
-                        <option value="m">Meters (m)</option>
-                        <option value="km">Kilometers (km)</option>
-                    </select>
-
-                    <span id="distancebuzzer">
-
-                        <svg fill="#f8e45c" height="40px" width="40px" version="1.1" id="Icons"
-                            xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                            viewBox="0 0 32 32" xml:space="preserve">
-                            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
-                            <g id="SVGRepo_iconCarrier">
-                                <g>
-                                    <path
-                                        d="M26.8,25H5.2c-0.8,0-1.5-0.4-1.9-1.1c-0.4-0.7-0.3-1.5,0.1-2.2L4.5,20c1.8-2.7,2.7-5.8,2.7-9c0-3.7,2.4-7.1,5.9-8.3 C13.7,1.6,14.8,1,16,1s2.3,0.6,2.9,1.7c3.5,1.2,5.9,4.6,5.9,8.3c0,3.2,0.9,6.3,2.7,9l1.1,1.7c0.4,0.7,0.5,1.5,0.1,2.2 C28.4,24.6,27.6,25,26.8,25z">
-                                    </path>
-                                </g>
-                                <path d="M11.1,27c0.5,2.3,2.5,4,4.9,4s4.4-1.7,4.9-4H11.1z"></path>
-                            </g>
-                        </svg>
-                    </span>
-                </div>
-            </div>
-        </div>
-
-       
-
-        <!-- Place CARD for Chart here ... -->
-      
- <!-- Ultrasonic 2 ... -->
-
-
- <h2 class="text-2xl py-2 font-[600]">Distance Sensor 2</h2>
-
-<div class="grid grid-cols-2 grid-rows-2 gap-4 h-[600px] pb-10">
-    <div
-        class="col-span-2 row-span-5 bg-white rounded-[8px] border-gray-200 shadow-sm p-4 py-8 justify-center grid">
-        <!-- Card 1  -->
-        <div class="flex mx-auto items-center justify-center">
-            <h2 class="font-[500] text-2xl">Distance</h2>
-
-        </div>
-
-        <div class="justify-center my-4">
-            <img src="assets/image/Distance-icon.png" alt="distance-icon" class="h-[300px] w-[300px]">
-            <h2 id="distance1" class="font-[500] text-2xl text-center p-4">Loading...</h2>
-        </div>
-
-        <!-- Dropdown Menu -->
-        <div class="flex mx-auto items-center justify-center gap-4">
-            <label for="distance-unit-select1" class="font-medium">Select Unit:</label>
-            <select id="distance-unit-select1" class="p-2 border rounded-md">
-               <option value="cm">Centimeters (cm)</option>
-                <option value="mm">Millimeters (mm)</option>
-                <option value="m">Meters (m)</option>
-                <option value="km">Kilometers (km)</option>
-            </select>
-
-            <span id="distancebuzzer1">
-
-                <svg fill="#f8e45c" height="40px" width="40px" version="1.1" id="Icons"
-                    xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                    viewBox="0 0 32 32" xml:space="preserve">
-                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
-                    <g id="SVGRepo_iconCarrier">
-                        <g>
-                            <path
-                                d="M26.8,25H5.2c-0.8,0-1.5-0.4-1.9-1.1c-0.4-0.7-0.3-1.5,0.1-2.2L4.5,20c1.8-2.7,2.7-5.8,2.7-9c0-3.7,2.4-7.1,5.9-8.3 C13.7,1.6,14.8,1,16,1s2.3,0.6,2.9,1.7c3.5,1.2,5.9,4.6,5.9,8.3c0,3.2,0.9,6.3,2.7,9l1.1,1.7c0.4,0.7,0.5,1.5,0.1,2.2 C28.4,24.6,27.6,25,26.8,25z">
-                            </path>
+                            <path d="M11.1,27c0.5,2.3,2.5,4,4.9,4s4.4-1.7,4.9-4H11.1z"></path>
                         </g>
-                        <path d="M11.1,27c0.5,2.3,2.5,4,4.9,4s4.4-1.7,4.9-4H11.1z"></path>
-                    </g>
-                </svg>
-            </span>
+                    </svg>
+                </span>
+            </div>
+        </div>
+
+        <!-- Humidity Card -->
+        <div class="col-span-1 row-span-1 justify-center grid border-2 border-green-500 bg-gradient-to-br from-green-200 to-green-300 rounded-md shadow-lg transition-transform transform hover:scale-105 hover:shadow-xl">
+            <div class="flex mx-auto items-center justify-center">
+                <h2 class="font-[500] text-2xl text-green-600">Humidity</h2>
+            </div>
+            <div>
+                <img src="assets/image/humidity-icon.png" alt="humidity-icon" class="h-[200px] w-[190px] mx-auto">
+            </div>
+            <div class="flex mx-auto items-center justify-center">
+                <h2 id="humidity" class="font-[500] text-2xl">Loading...</h2>
+            </div>
         </div>
     </div>
 </div>
 
- <!-- Place CARD for Chart here ... -->
- <div
-            class="grid grid-cols-5 grid-rows-5 gap-4 h-[400px] bg-white rounded-[8px] border-gray-200 shadow-sm p-4 py-8 w-full mt-4 mx-auto">
+<div class="grid grid-cols-5 grid-rows-5 gap-4 h-[400px] bg-white rounded-[8px] border border-gray-300 shadow-lg p-4 py-8 w-full mt-4 mx-auto">
+    <canvas id="myChart" width="18000" height="5000" class="mx-auto flex items-center justify-center"></canvas>
+</div>
 
-            <canvas id="combinedChart" width="18000" height="5000" class="mx-auto flex items-center justify-center"></canvas>
+<!-- end activity 1 -->
+
+
+
+ <!-- ACT2 -->
+<section id="act2">
+    <h2 class="text-2xl py-2 font-[600]">Activity 2 - Distance Sensor</h2>
+
+    <div class="grid grid-cols-2 gap-4 pb-10">
+        <!-- Distance Sensor 1 -->
+        <div class="bg-white rounded-[8px] border-gray-200 shadow-sm p-4 py-8 justify-center grid">
+            <div class="flex mx-auto items-center justify-center">
+                <h2 class="font-[500] text-2xl">Distance Sensor 1</h2>
+            </div>
+
+            <div class="justify-center my-4">
+                <img src="assets/image/Distance-icon.png" alt="distance-icon" class="h-[300px] w-[300px]">
+                <h2 id="distance" class="font-[500] text-2xl text-center p-4">Loading...</h2>
+            </div>
+
+            <!-- Dropdown Menu -->
+            <div class="flex mx-auto items-center justify-center gap-4">
+                <label for="distance-unit-select" class="font-medium">Select Unit:</label>
+                <select id="distance-unit-select" class="p-2 border rounded-md">
+                    <option value="cm">Centimeters (cm)</option>
+                    <option value="mm">Millimeters (mm)</option>
+                    <option value="m">Meters (m)</option>
+                    <option value="km">Kilometers (km)</option>
+                </select>
+
+                <span id="distancebuzzer">
+                    <svg fill="#f8e45c" height="40px" width="40px" version="1.1" id="Icons"
+                        xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                        viewBox="0 0 32 32" xml:space="preserve">
+                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                        <g id="SVGRepo_iconCarrier">
+                            <g>
+                                <path
+                                    d="M26.8,25H5.2c-0.8,0-1.5-0.4-1.9-1.1c-0.4-0.7-0.3-1.5,0.1-2.2L4.5,20c1.8-2.7,2.7-5.8,2.7-9c0-3.7,2.4-7.1,5.9-8.3 C13.7,1.6,14.8,1,16,1s2.3,0.6,2.9,1.7c3.5,1.2,5.9,4.6,5.9,8.3c0,3.2,0.9,6.3,2.7,9l1.1,1.7c0.4,0.7,0.5,1.5,0.1,2.2 C28.4,24.6,27.6,25,26.8,25z">
+                                </path>
+                            </g>
+                            <path d="M11.1,27c0.5,2.3,2.5,4,4.9,4s4.4-1.7,4.9-4H11.1z"></path>
+                        </g>
+                    </svg>
+                </span>
+            </div>
         </div>
- 
+
+        <!-- Distance Sensor 2 -->
+        <div class="bg-white rounded-[8px] border-gray-200 shadow-sm p-4 py-8 justify-center grid">
+            <div class="flex mx-auto items-center justify-center">
+                <h2 class="font-[500] text-2xl">Distance Sensor 2</h2>
+            </div>
+
+            <div class="justify-center my-4">
+                <img src="assets/image/Distance-icon.png" alt="distance-icon" class="h-[300px] w-[300px]">
+                <h2 id="distance1" class="font-[500] text-2xl text-center p-4">Loading...</h2>
+            </div>
+
+            <!-- Dropdown Menu -->
+            <div class="flex mx-auto items-center justify-center gap-4">
+                <label for="distance-unit-select1" class="font-medium">Select Unit:</label>
+                <select id="distance-unit-select1" class="p-2 border rounded-md">
+                    <option value="cm">Centimeters (cm)</option>
+                    <option value="mm">Millimeters (mm)</option>
+                    <option value="m">Meters (m)</option>
+                    <option value="km">Kilometers (km)</option>
+                </select>
+
+                <span id="distancebuzzer1">
+                    <svg fill="#f8e45c" height="40px" width="40px" version="1.1" id="Icons"
+                        xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                        viewBox="0 0 32 32" xml:space="preserve">
+                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                        <g id="SVGRepo_iconCarrier">
+                            <g>
+                                <path
+                                    d="M26.8,25H5.2c-0.8,0-1.5-0.4-1.9-1.1c-0.4-0.7-0.3-1.5,0.1-2.2L4.5,20c1.8-2.7,2.7-5.8,2.7-9c0-3.7,2.4-7.1,5.9-8.3 C13.7,1.6,14.8,1,16,1s2.3,0.6,2.9,1.7c3.5,1.2,5.9,4.6,5.9,8.3c0,3.2,0.9,6.3,2.7,9l1.1,1.7c0.4,0.7,0.5,1.5,0.1,2.2 C28.4,24.6,27.6,25,26.8,25z">
+                                </path>
+                            </g>
+                            <path d="M11.1,27c0.5,2.3,2.5,4,4.9,4s4.4-1.7,4.9-4H11.1z"></path>
+                        </g>
+                    </svg>
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Place CARD for Chart here ... -->
+    <div class="grid grid-cols-5 grid-rows-5 gap-4 h-[400px] bg-white rounded-[8px] border-gray-200 shadow-sm p-4 py-8 w-full mt-4 mx-auto">
+        <canvas id="combinedChart" width="18000" height="5000" class="mx-auto flex items-center justify-center"></canvas>
+    </div>
+    <!-- end chart -->
+</section>
+
+
+       <!-- ACT3 -->
+       <section id="act3">
+    <h2 class="text-2xl py-2 font-[600]">Activity 3 - PIR MOTION SENSOR</h2>
+
+    <div class="grid grid-cols-5 grid-rows-5 gap-4 h-[400px] bg-white rounded-[8px] border-gray-200 shadow-sm p-4 py-8 w-full mt-4 mx-auto">
+        <canvas id="pirChart" width="18000" height="5000" class="mx-auto flex items-center justify-center"></canvas>
+    </div>
+
+    <div style="display: flex; flex-direction: column; align-items: center; padding-top: 20px;">
+        <span id="pirbuzzer">
+            <svg fill="#f8e45c" height="150px" width="150px" version="1.1" id="Icons"
+                xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                viewBox="0 0 32 32" xml:space="preserve">
+                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                <g id="SVGRepo_iconCarrier">
+                    <g>
+                        <path
+                            d="M26.8,25H5.2c-0.8,0-1.5-0.4-1.9-1.1c-0.4-0.7-0.3-1.5,0.1-2.2L4.5,20c1.8-2.7,2.7-5.8,2.7-9c0-3.7,2.4-7.1,5.9-8.3C13.7,1.6,14.8,1,16,1s2.3,0.6,2.9,1.7c3.5,1.2,5.9,4.6,5.9,8.3c0,3.2,0.9,6.3,2.7,9l1.1,1.7c0.4,0.7,0.5,1.5,0.1,2.2C28.4,24.6,27.6,25,26.8,25z">
+                        </path>
+                    </g>
+                    <path d="M11.1,27c0.5,2.3,2.5,4,4.9,4s4.4-1.7,4.9-4H11.1z"></path>
+                </g>
+            </svg>
+        </span>
+
+        <h3 style="margin-top: 20px; font-size: 1.5rem; font-weight: 600;">Capture Images</h3>
+
+        <img src="/python/image/motion_capture.jpg" alt="Motion Capture" style="max-width: 100%; height: auto; margin-top: 10px; padding-bottom: 40px;" onerror="this.onerror=null; this.src='/path/to/default/image.jpg';">
+        
+        <!-- Live Stream Video Feed -->
+        <h3 style="margin-top: 20px; font-size: 1.5rem; font-weight: 600;">Live Camera Feed</h3>
+        <img src="http://192.168.0.105:8080/?action=stream" alt="Live Stream" style="max-width: 100%; height: auto; margin-top: 10px; padding-bottom: 40px;">
+
+        <!-- Buttons for functionality -->
+        <div style="margin-top: 20px;">
+            <button id="togglePir" class="bg-blue-500 text-white px-4 py-2 rounded">Toggle On/Off</button>
+            <button id="captureImage" class="bg-green-500 text-white px-4 py-2 rounded">Capture Picture</button>
+            <button id="showImages" class="bg-purple-500 text-white px-4 py-2 rounded">Show All Images</button>
+        </div>
+
+        <!-- Section to show all captured images -->
+        <div id="imageGallery" style="margin-top: 20px; display: none;">
+            <h3 style="font-size: 1.5rem; font-weight: 600;">Captured Images</h3>
+            <div id="imagesContainer" style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: 10px;"></div>
+        </div>
+    </div>
+</section>
+
+
+<script>
+    function refreshImage() {
+        const img = document.querySelector('img[alt="Motion Capture"]');
+        const timestamp = new Date().getTime();
+        img.src = `/python/image/motion_capture.jpg?random=${timestamp}`;
+    }
+    setInterval(refreshImage, 5000);
+</script>
+
+
         <!-- end chart -->
          
-        <!-- End ACT 2  -->
+         <!-- End ACT 3  -->
+<!-- ACT4 -->
+<section id="act4">
+    <h2 class="text-2xl py-2 font-[600]">Activity 4 - GAS and VIBRATION SENSOR</h2>
 
+    <div class="grid grid-cols-5 grid-rows-5 gap-4 h-[400px] bg-white rounded-[8px] border-gray-200 shadow-sm p-4 py-8 w-full mt-4 mx-auto">
+        <canvas id="act4Chart" width="18000" height="5000" class="mx-auto flex items-center justify-center"></canvas>
+    </div>
+
+
+    
+   <!-- End ACT 4  -->
     </main>
 
     <!-- Scripts for JS -->
-
+    <script src="script/act4_chart.js"></script> 
     <script src="script/dht22_chart.js"></script>
     <script src="script/temperature.js"></script>
     <script src="script/distance1.js"></script> 
     <script src="script/distance_chart.js"></script> 
+    <script src="script/pirmotion_chart.js"></script> 
+    <script src="script/buzzerpir.js"></script>
+   
+
 
 
 </html>
