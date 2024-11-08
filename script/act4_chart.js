@@ -50,19 +50,35 @@ if (canvasElement) {
         fetch('/includes/act4_chart.php') // Update with your PHP script path
             .then(response => response.json())
             .then(data => {
-                // Assuming data.gas and data.vibration are arrays of the last 10 records
+                // Update the chart with new gas and vibration data
                 act4Chart.data.datasets[0].data = data.gas; // Gas data
                 act4Chart.data.datasets[1].data = data.vibration; // Vibration data
                 act4Chart.update(); // Re-render the chart
+                
+                // Populate the table
+                const tbody = document.getElementById('sensorDataBody');
+                tbody.innerHTML = ''; // Clear existing rows
+                data.gas.forEach((gasValue, index) => {
+                    const vibrationValue = data.vibration[index];
+                    const row = `<tr>
+                                    <td class="border border-gray-300 p-2">${index + 1}</td>
+                                    <td class="border border-gray-300 p-2">${gasValue}</td>
+                                    <td class="border border-gray-300 p-2">${vibrationValue}</td>
+                                 </tr>`;
+                    tbody.innerHTML += row;
+                });
             })
             .catch(error => console.error('Error fetching data:', error));
     }
+    
 
     // Fetch data every 10 seconds
-    setInterval(fetchData, 10000); // 10000 milliseconds = 10 seconds
+    setInterval(fetchData, 1000); // 10000 milliseconds = 10 seconds
 
     // Initial data fetch
     fetchData();
 } else {
     console.error('Canvas element not found');
 }
+
+
