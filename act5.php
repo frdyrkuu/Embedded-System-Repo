@@ -174,7 +174,7 @@
 
             <br>
 
-            <<div class="mt-4">
+            <div class="mt-4">
                 <h1 class="text-center">Historical Data</h1>
                 <table class="min-w-full border border-gray-300">
                     <thead>
@@ -189,8 +189,8 @@
                         <!-- Data will be populated here by JavaScript -->
                     </tbody>
                 </table>
-        </div>
-        <!-- End ACT 4  -->
+            </div>
+            <!-- End ACT 4  -->
     </main>
 
     <!-- Scripts for JS -->
