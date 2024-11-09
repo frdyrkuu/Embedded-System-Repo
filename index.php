@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
-        Team Itik - Embedded
+        Team Itik - Embedded System
     </title>
     <link rel="stylesheet" href="src/output.css">
     <link rel="icon" href="favicon.ico">
@@ -41,8 +41,7 @@
             <!-- SIDEBAR HEADER -->
             <div class="flex items-center justify-between gap-2 px-6 py-5.5 lg:py-6.5">
                 <a href="/">
-                    <img src="assets/Donald_Duck-logo-A918488B6F-seeklogo.com-1628401375.png" alt="Logo"
-                        class="w-auto h-40" />
+                    <img src="assets/Donald_Duck-logo-A918488B6F-seeklogo.com-1628401375.png" alt="Logo" />
                 </a>
 
                 <button class="block lg:hidden" @click.stop="sidebarToggle = !sidebarToggle">
@@ -332,8 +331,8 @@
                             </span>
                         </button>
                         <!-- Hamburger Toggle BTN -->
-                        <a class="block flex-shrink-0 lg:hidden" href="index.html">
-                            <img src="src/images/logo/logo-icon.svg" alt="Logo" />
+                        <a class="block flex-shrink-0 lg:hidden" href="/">
+                            <img src="assets/Donald_Duck-logo-A918488B6F-seeklogo.com-1628401375.png" alt="Logo" />
                         </a>
                     </div>
                     <div class="hidden sm:block">
@@ -953,7 +952,7 @@
                                 <div class="flex w-full flex-wrap gap-3 sm:gap-5 items-center justify-center">
                                     <div class="flex min-w-47.5">
                                         <span
-                                            class="mr-2 mt-1 flex h-4 w-full max-w-4 items-center justify-center rounded-full border border-primary">
+                                            class="mr-2 mt-1 flex h-4 w-full max-w-4 items-center justify-center rounded-full border border-red-500">
                                             <span class="block h-2.5 w-full max-w-2.5 rounded-full bg-red-500"></span>
                                         </span>
                                         <div class="w-full">
